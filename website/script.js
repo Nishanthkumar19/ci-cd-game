@@ -1,24 +1,15 @@
+function play(user){
+  const options=['stone','paper','scissors'];
+  const cpu=options[Math.floor(Math.random()*3)];
+  let result="";
 
-function play(userChoice) {
-  const choices = ['stone', 'paper', 'scissor'];
-  const botChoice = choices[Math.floor(Math.random() * 3)];
+  if(user===cpu) result="Draw ";
+  else if(
+    (user==="stone" && cpu==="scissors") ||
+    (user==="paper" && cpu==="stone") ||
+    (user==="scissors" && cpu==="paper")
+  ) result="You Win ";
+  else result="Computer Wins ";
 
-  let result = "";
-
-  if (userChoice === botChoice) {
-    result = "Draw!";
-  } else if (
-    (userChoice === 'stone' && botChoice === 'scissor') ||
-    (userChoice === 'paper' && botChoice === 'stone') ||
-    (userChoice === 'scissor' && botChoice === 'paper')
-  ) {
-    result = "You Win!";
-  } else {
-    result = "You Lose!";
-  }
-
-  document.getElementById("result").innerText =
-    "You: " + userChoice +
-    " | Bot: " + botChoice +
-    " → " + result;
+  document.getElementById("result").innerText=`CPU chose ${cpu}. ${result}`;
 }
